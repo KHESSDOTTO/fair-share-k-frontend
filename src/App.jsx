@@ -1,3 +1,9 @@
+// Need to add button bellow active items to see inactive items. Need to create page of inactive items with option to view details
+// need to alter viewDetails of product (business) to conditionally render permanently delete button to exclude product from
+// history of inactive products.
+// Add toasts to Loading stages and to confirm exclusion of products "permanently" (softDelete from inactives) and to delete account
+// (softDelete).
+
 import { Route, Routes } from "react-router-dom";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Error } from "./pages/Error";
@@ -20,13 +26,6 @@ import { BusinessEdit } from "./pages/BusinessEdit";
 import { BusinessOrderDetail } from "./pages/BusinessOrderDetail";
 import { BusinessProductDetail } from "./pages/BusinessProductDetail";
 import { Toaster } from "react-hot-toast";
-
-// toast((t) => (
-//   <span>
-//     Custom and <b>bold</b>
-//     <button onClick={() => {outraFunc();}>Dismiss</button>
-//   </span>
-// ));
 
 function App() {
   return (
