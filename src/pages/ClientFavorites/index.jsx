@@ -4,7 +4,7 @@ import { ClientNavBar } from "../../components/ClientNavBar";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export function Favorites() {
+export function ClientFavorites() {
   const [favorites, setFavorites] = useState([]),
     [reload, setReload] = useState(false);
 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BusinessNavBar } from "../../components/BusinessNavBar";
 import toast from "react-hot-toast";
 
-export function BusinessForm() {
+export function BusinessCreateProduct() {
   const [form, setForm] = useState({
       picture: "",
       name: "",

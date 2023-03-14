@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { NameLogo } from "../../components/NameLogo";
 import { api } from "../../api/api";
 import { BusinessNavBar } from "../../components/BusinessNavBar";
 import toast from "react-hot-toast";
@@ -42,8 +41,8 @@ export function BusinessProductDetail() {
 
   async function handleDelete() {
     try {
-      await api.delete(`/api/product/delete/${params.idProduct}`);
-      toast.success("Product deleted!");
+      await api.put(`/api/product/inactivate/${params.idProduct}`);
+      toast.success("Product inactivated!");
       navigate("/business/admin");
     } catch (err) {
       console.log(err);
@@ -53,7 +52,7 @@ export function BusinessProductDetail() {
 
   // fazer inputs do form com value do form no handleChange
   return (
-    <div className="pb-6">
+    <div className="pb-6 min-h-screen">
       <BusinessNavBar />
       <section className="container flex flex-row justify-center items-center mx-auto mt-5 py-5 w-11/12 bg-slate-100 border-2 border-indigo-900 rounded-xl">
         <div className="w-1/2 p-auto border-r-2 border-slate-200 flex justify-center items-center">

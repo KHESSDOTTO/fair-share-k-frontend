@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
 import { ClientNavBar } from "../../components/ClientNavBar";
-import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export function Profile() {
+export function ClientEditProfile() {
   const { setLoggedInUser } = useContext(AuthContext);
   const [reload, setReload] = useState(false);
   const [img, setImg] = useState("");
@@ -58,15 +57,12 @@ export function Profile() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       console.log("antes do handleupload");
       const imgURL = await handleUpload();
-      console.log("depois do handle");
       await api.put("/api/user/edit", { ...form, picture: imgURL });
-      console.log("depois do put");
       toast.success("Alterations saved!");
-      navigate("/user/viewProfile");
+      navigate("/user/profile");
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong... please try again.");

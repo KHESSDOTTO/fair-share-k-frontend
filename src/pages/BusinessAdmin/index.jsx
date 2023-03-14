@@ -41,7 +41,7 @@ export function BusinessAdmin() {
 
   function handleNavigateProduct(e) {
     try {
-      navigate(`/business/admin/viewMagic/${e.target.value}`);
+      navigate(`/business/viewProduct/${e.target.value}`);
     } catch (err) {
       console.log(err);
     }
@@ -49,14 +49,11 @@ export function BusinessAdmin() {
 
   function handleNavigateOrder(e) {
     try {
-      navigate(`/business/admin/viewOrder/${e.target.value}`);
+      navigate(`/business/viewOrder/${e.target.value}`);
     } catch (err) {
       console.log(err);
     }
   }
-
-  console.log(myOrders);
-  console.log(myProducts);
 
   return (
     <div className="min-h-screen w-screen mb-0">
@@ -142,60 +139,69 @@ export function BusinessAdmin() {
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold pl-56">
               My Products
             </h2>
-            <div className="h-80 overflow-auto bg-slate-200/80 rounded-xl border-2 mt-2 mb-6 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-auto bg-slate-100/90 rounded-xl border-2 mt-2 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
               {!isLoading &&
-                myProducts.map((currentProduct) => {
-                  return (
-                    <article
-                      className={`w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-b-indigo-600/20 pb-6`}
-                      key={currentProduct._id}
-                    >
-                      <div className="w-1/3 flex flex-row justify-center">
-                        <img
-                          src={currentProduct.picture}
-                          alt="Product"
-                          className="w-24 h-24 rounded-lg shadow-xl max-h-full"
-                        />
-                      </div>
-                      <div className="w-1/3 flex flex-row justify-start pl-12">
-                        <ul>
-                          <li>
-                            <span className="font-semibold">- Product: </span>
-                            {currentProduct.name}
-                          </li>
-                          <li>
-                            <span className="font-semibold">- Price:</span>{" "}
-                            {`R$ ${Math.floor(currentProduct.price / 100)},${
-                              String(currentProduct.price)[
-                                String(currentProduct.price).length - 2
-                              ]
-                            }${
-                              String(currentProduct.price)[
-                                String(currentProduct.price).length - 1
-                              ]
-                            }`}
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="w-1/3 flex flex-row justify-center">
-                        <button
-                          value={currentProduct._id}
-                          className="btn-indigo"
-                          onClick={handleNavigateProduct}
-                        >
-                          View
-                        </button>
-                      </div>
-                    </article>
-                  );
-                })}
+                myProducts
+                  .filter((cP) => cP.isActive === true)
+                  .map((currentProduct) => {
+                    return (
+                      <article
+                        className={`w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-b-indigo-600/20 pb-6`}
+                        key={currentProduct._id}
+                      >
+                        <div className="w-1/3 flex flex-row justify-center">
+                          <img
+                            src={currentProduct.picture}
+                            alt="Product"
+                            className="w-24 h-24 rounded-lg shadow-xl max-h-full"
+                          />
+                        </div>
+                        <div className="w-1/3 flex flex-row justify-start pl-12">
+                          <ul>
+                            <li>
+                              <span className="font-semibold">- Product: </span>
+                              {currentProduct.name}
+                            </li>
+                            <li>
+                              <span className="font-semibold">- Price:</span>{" "}
+                              {`R$ ${Math.floor(currentProduct.price / 100)},${
+                                String(currentProduct.price)[
+                                  String(currentProduct.price).length - 2
+                                ]
+                              }${
+                                String(currentProduct.price)[
+                                  String(currentProduct.price).length - 1
+                                ]
+                              }`}
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="w-1/3 flex flex-row justify-center">
+                          <button
+                            value={currentProduct._id}
+                            className="btn-indigo"
+                            onClick={handleNavigateProduct}
+                          >
+                            View
+                          </button>
+                        </div>
+                      </article>
+                    );
+                  })}
+            </div>
+            <div className="flex flex-col items-center mt-2">
+              <Link to="/business/myInactiveProducts">
+                <button className="btn-indigo bg-slate-500 hover:bg-slate-600 italic text-white/80">
+                  View Inactive Products
+                </button>
+              </Link>
             </div>
           </section>
-          <section className="w-10/12 mb-0">
+          <section className="w-10/12 mb-0 mt-10">
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold text-center">
               History
             </h2>
-            <div className="h-80 overflow-y-auto bg-gray-200 rounded-xl border-2 mt-2 mb-6 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-y-auto bg-white/80 rounded-xl border-2 mt-2 mb-6 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
               {!isLoading &&
                 myOrders.orders
                   .filter(

@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 
-export function ViewProfile() {
+export function ClientProfile() {
   const [form, setForm] = useState([]),
     [orders, setOrders] = useState([]),
     navigate = useNavigate(),
@@ -29,8 +29,6 @@ export function ViewProfile() {
     }
     fetchForms();
   }, [reload]);
-
-  console.log(orders);
 
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
@@ -99,7 +97,7 @@ export function ViewProfile() {
             <p className="text-sm">{form.contactPhone}</p>
           </div>
           <div className="flex flex-row justify-center items-center gap-8">
-            <Link to={"/user/profile"}>
+            <Link to={"/user/profile/edit"}>
               <button className="btn-indigo">Edit</button>
             </Link>
             <button

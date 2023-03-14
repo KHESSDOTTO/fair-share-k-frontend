@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { BusinessNavBar } from "../../components/BusinessNavBar";
 import toast from "react-hot-toast";
 
-export function BusinessEdit() {
+export function BusinessEditProfile() {
   const { setLoggedInUser } = useContext(AuthContext);
   const [reload, setReload] = useState(false);
   const [img, setImg] = useState("");
@@ -62,7 +62,7 @@ export function BusinessEdit() {
       const imgURL = await handleUpload();
       await api.put("/api/user/edit", { ...form, picture: imgURL });
       toast.success("Alterations Saved!");
-      navigate("/business/admin/profile");
+      navigate("/business/profile");
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong... please try again.");

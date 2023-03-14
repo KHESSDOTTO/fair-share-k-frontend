@@ -9,23 +9,24 @@ import { AuthContextComponent } from "./contexts/authContext";
 import { Error } from "./pages/Error";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { Profile } from "./pages/Profile";
+import { ClientEditProfile, Profile } from "./pages/ClientEditProfile";
 import { Signup } from "./pages/Signup";
-import { Favorites } from "./pages/Favorites";
-import { ClientOrder } from "./pages/ClientOrder";
-import { ViewProfile } from "./pages/ViewProfile";
+import { ClientFavorites } from "./pages/ClientFavorites";
+import { ClientOrderDetail } from "./pages/ClientOrderDetail";
+import { ClientProfile } from "./pages/ClientProfile";
 import { ProtectedBusinessRoute } from "./components/ProtectedRoutes/protectedBusinessRoute.jsx";
 import { ProtectedClientRoute } from "./components/ProtectedRoutes/protectedClientRoute.jsx";
 import { ClientDiscover } from "./pages/ClientDiscover";
-import { ClientProductDetails } from "./pages/ClientProductDetails";
-import { DiscoverNotClient } from "./pages/DiscoverNotClient";
-import { BusinessForm } from "./pages/BusinessForm";
+import { ClientProductDetail } from "./pages/ClientProductDetail";
+import { DiscoverNotClient } from "./pages/DiscoverNotUser";
+import { BusinessCreateProduct } from "./pages/BusinessCreateProduct";
 import { BusinessProfile } from "./pages/BussinesProfile";
 import { BusinessAdmin } from "./pages/BusinessAdmin";
-import { BusinessEdit } from "./pages/BusinessEdit";
+import { BusinessEditProfile } from "./pages/BusinessEditProfile";
 import { BusinessOrderDetail } from "./pages/BusinessOrderDetail";
 import { BusinessProductDetail } from "./pages/BusinessProductDetail";
 import { Toaster } from "react-hot-toast";
+import { BusinessInactiveProducts } from "./pages/BusnessInactiveProducts";
 
 function App() {
   return (
@@ -40,19 +41,19 @@ function App() {
             <Route path="/discover" element={<DiscoverNotClient />} />
             <Route
               path="/user/profile"
-              element={<ProtectedClientRoute component={Profile} />}
+              element={<ProtectedClientRoute component={ClientProfile} />}
             />
             <Route
-              path="/user/viewProfile"
-              element={<ProtectedClientRoute component={ViewProfile} />}
+              path="/user/profile/edit"
+              element={<ProtectedClientRoute component={ClientEditProfile} />}
             />
             <Route
               path="/user/viewOrder/:idOrder"
-              element={<ProtectedClientRoute component={ClientOrder} />}
+              element={<ProtectedClientRoute component={ClientOrderDetail} />}
             />
             <Route
               path="/user/favorites"
-              element={<ProtectedClientRoute component={Favorites} />}
+              element={<ProtectedClientRoute component={ClientFavorites} />}
             />
             <Route
               path="/user/discover"
@@ -60,34 +61,42 @@ function App() {
             />
             <Route
               path="/user/viewMagic/:idMagic"
-              element={
-                <ProtectedClientRoute component={ClientProductDetails} />
-              }
+              element={<ProtectedClientRoute component={ClientProductDetail} />}
             />
             <Route
               path="/business/admin"
               element={<ProtectedBusinessRoute component={BusinessAdmin} />}
             />
             <Route
-              path="/business/admin/profile"
+              path="/business/inactiveProducts"
+              element={
+                <ProtectedBusinessRoute component={BusinessInactiveProducts} />
+              }
+            />
+            <Route
+              path="/business/profile"
               element={<ProtectedBusinessRoute component={BusinessProfile} />}
             />
             <Route
-              path="/business/admin/create-form"
-              element={<ProtectedBusinessRoute component={BusinessForm} />}
+              path="/business/create-form"
+              element={
+                <ProtectedBusinessRoute component={BusinessCreateProduct} />
+              }
             />
             <Route
-              path="/business/admin/edit"
-              element={<ProtectedBusinessRoute component={BusinessEdit} />}
+              path="/business/profile/edit"
+              element={
+                <ProtectedBusinessRoute component={BusinessEditProfile} />
+              }
             />
             <Route
-              path="/business/admin/viewOrder/:orderId"
+              path="/business/viewOrder/:orderId"
               element={
                 <ProtectedBusinessRoute component={BusinessOrderDetail} />
               }
             />
             <Route
-              path="/business/admin/viewMagic/:idProduct"
+              path="/business/viewProduct/:idProduct"
               element={
                 <ProtectedBusinessRoute component={BusinessProductDetail} />
               }

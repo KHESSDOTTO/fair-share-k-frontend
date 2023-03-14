@@ -6,7 +6,7 @@ import { api } from "../../api/api";
 import { ProductDetailsAndOrder } from "../../components/ProductDetailsAndOrder";
 import toast from "react-hot-toast";
 
-export function ClientProductDetails() {
+export function ClientProductDetail() {
   const params = useParams();
   const [selProduct, setSelProduct] = useState({});
 

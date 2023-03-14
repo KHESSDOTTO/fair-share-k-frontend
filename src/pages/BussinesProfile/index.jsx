@@ -7,17 +7,13 @@ import { BusinessNavBar } from "../../components/BusinessNavBar";
 
 export function BusinessProfile() {
   const [form, setForm] = useState([]);
-  const [isLoading, setisLoading] = useState(true),
-    navigate = useNavigate(),
-    context = useContext(AuthContext);
+  (navigate = useNavigate()), (context = useContext(AuthContext));
 
   useEffect(() => {
     async function fetchForms() {
       try {
         const response = await api.get("/api/user/get");
-
         setForm(response.data);
-        setisLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -43,7 +39,7 @@ export function BusinessProfile() {
           src={form.picture}
           className="w-56 h-56 rounded-full mb-5 border-4 border-black"
         />
-        <div className="justify-evenly flex flex-row flex-wrap gap-4 flex-wrap w-11/12 border-t border-t-indigo-800 mx-auto box-border p-6">
+        <div className="justify-evenly flex flex-row gap-4 flex-nowrap items-start w-11/12 border-t border-t-indigo-800 mx-auto box-border p-6">
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Name</p>
             <p className="text-sm">{form.name}</p>
@@ -76,18 +72,18 @@ export function BusinessProfile() {
             <p className="font-semibold text-lg">Contact Phone</p>
             <p className="text-sm">{form.contactPhone}</p>
           </div>
-          <div className="flex flex-row justify-center items-center gap-10 mt-2">
-            <Link to={"/business/admin/edit"}>
-              <button className="btn-indigo">Edit</button>
-            </Link>
-            <button
-              onClick={handleLogOut}
-              type="submit"
-              className="btn-indigo bg-red-500 hover:bg-red-600"
-            >
-              Log out
-            </button>
-          </div>
+        </div>
+        <div className="flex flex-row justify-center items-center gap-10 mt-2 pb-4">
+          <Link to={"/business/admin/edit"}>
+            <button className="btn-indigo">Edit</button>
+          </Link>
+          <button
+            onClick={handleLogOut}
+            type="submit"
+            className="btn-indigo bg-red-500 hover:bg-red-600"
+          >
+            Log out
+          </button>
         </div>
       </section>
     </div>

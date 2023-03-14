@@ -4,7 +4,7 @@ import { api } from "../../api/api";
 import { ClientNavBar } from "../../components/ClientNavBar";
 import toast from "react-hot-toast";
 
-export function ClientOrder() {
+export function ClientOrderDetail() {
   const [orders, setOrder] = useState({});
   const params = useParams();
   const [isLoading, setisLoading] = useState(true);
