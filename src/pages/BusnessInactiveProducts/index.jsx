@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api/api";
+import { BusinessNavBar } from "../../components/BusinessNavBar";
 
 export function BusinessInactiveProducts() {
   const [isLoading, setisLoading] = useState(true),
@@ -9,7 +10,7 @@ export function BusinessInactiveProducts() {
     async function fetchInactiveProducts() {
       try {
         const response = await api.get("/api/product/get/myProducts");
-        setMyProducts(response);
+        setMyProducts(response.data);
         setisLoading(false);
       } catch (err) {
         console.log(err);
@@ -26,8 +27,11 @@ export function BusinessInactiveProducts() {
     }
   }
 
+  console.log(myProducts);
+
   return (
-    <>
+    <div className="min-h-screen">
+      <BusinessNavBar />
       <div className="flex flex-row justify-center h-80 bg-white rounded drop-shadow-lg flex justify-center gap-20 items-end pb-12 px-16 border-b-4 border-indigo-900 w-10/12 mx-auto mb-4">
         <h1 className="text-6xl text-indigo-900 italic">Inactive Products</h1>
       </div>
@@ -71,6 +75,6 @@ export function BusinessInactiveProducts() {
               </div>
             </article>;
           })}
-    </>
+    </div>
   );
 }

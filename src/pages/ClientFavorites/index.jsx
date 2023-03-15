@@ -44,7 +44,7 @@ export function ClientFavorites() {
             return (
               <article
                 key={currentFavorite._id}
-                className="flex flex-row border border-indigo-200 items-center w-10/12 rounded-xl w-11/12 px-4 py-6 h-28"
+                className="flex bg-white flex-row border-2 border-indigo-200 items-center w-10/12 rounded-xl w-11/12 px-4 py-6 h-28"
               >
                 <div className="w-1/3 h-full flex flex-row justify-center">
                   <img

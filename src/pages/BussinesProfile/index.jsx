@@ -6,8 +6,9 @@ import { useContext } from "react";
 import { BusinessNavBar } from "../../components/BusinessNavBar";
 
 export function BusinessProfile() {
-  const [form, setForm] = useState([]);
-  (navigate = useNavigate()), (context = useContext(AuthContext));
+  const [form, setForm] = useState([]),
+    navigate = useNavigate(),
+    context = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchForms() {
@@ -74,7 +75,7 @@ export function BusinessProfile() {
           </div>
         </div>
         <div className="flex flex-row justify-center items-center gap-10 mt-2 pb-4">
-          <Link to={"/business/admin/edit"}>
+          <Link to={"/business/profile/edit"}>
             <button className="btn-indigo">Edit</button>
           </Link>
           <button

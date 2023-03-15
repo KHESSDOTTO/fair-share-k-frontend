@@ -1,7 +1,6 @@
 import { api } from "../../api/api.js";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
 
 export function ProductFeed(props) {
   const { search } = props;
@@ -27,9 +26,10 @@ export function ProductFeed(props) {
       <h1 className="font-semibold mb-4 text-3xl text-indigo-900">
         Produtos disponíveis
       </h1>
-      <div className="flex flex-row gap-10 flex-wrap w-11/12 border-t border-t-indigo-800 mx-auto box-border p-6">
+      <div className="flex flex-row justify-evenly flex-wrap w-11/12 border-t border-t-indigo-800 mx-auto box-border py-6 px-4">
         {!isLoading &&
           productFeed
+            .filter((cE) => cE.isActive === true)
             .filter(
               (cE) =>
                 cE.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -42,7 +42,7 @@ export function ProductFeed(props) {
               return (
                 <article
                   key={cE._id}
-                  className="container bg-white border border-indigo-300 flex flex-col justify-between items-center w-1/4 gap-5 justify-evenly py-5"
+                  className="container bg-white border border-indigo-300 flex flex-col justify-between items-center w-1/4 gap-4 justify-evenly py-5"
                 >
                   <img
                     src={cE.picture}

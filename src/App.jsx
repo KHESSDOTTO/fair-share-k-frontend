@@ -9,24 +9,24 @@ import { AuthContextComponent } from "./contexts/authContext";
 import { Error } from "./pages/Error";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { ClientEditProfile, Profile } from "./pages/ClientEditProfile";
 import { Signup } from "./pages/Signup";
+import { DiscoverNotClient } from "./pages/DiscoverNotUser";
+import { ProtectedBusinessRoute } from "./components/ProtectedRoutes/protectedBusinessRoute.jsx";
+import { ProtectedClientRoute } from "./components/ProtectedRoutes/protectedClientRoute.jsx";
 import { ClientFavorites } from "./pages/ClientFavorites";
 import { ClientOrderDetail } from "./pages/ClientOrderDetail";
 import { ClientProfile } from "./pages/ClientProfile";
-import { ProtectedBusinessRoute } from "./components/ProtectedRoutes/protectedBusinessRoute.jsx";
-import { ProtectedClientRoute } from "./components/ProtectedRoutes/protectedClientRoute.jsx";
+import { ClientEditProfile } from "./pages/ClientEditProfile";
 import { ClientDiscover } from "./pages/ClientDiscover";
 import { ClientProductDetail } from "./pages/ClientProductDetail";
-import { DiscoverNotClient } from "./pages/DiscoverNotUser";
 import { BusinessCreateProduct } from "./pages/BusinessCreateProduct";
 import { BusinessProfile } from "./pages/BussinesProfile";
 import { BusinessAdmin } from "./pages/BusinessAdmin";
 import { BusinessEditProfile } from "./pages/BusinessEditProfile";
 import { BusinessOrderDetail } from "./pages/BusinessOrderDetail";
 import { BusinessProductDetail } from "./pages/BusinessProductDetail";
-import { Toaster } from "react-hot-toast";
 import { BusinessInactiveProducts } from "./pages/BusnessInactiveProducts";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (

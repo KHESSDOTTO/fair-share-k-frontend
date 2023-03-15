@@ -190,7 +190,7 @@ export function BusinessAdmin() {
                   })}
             </div>
             <div className="flex flex-col items-center mt-2">
-              <Link to="/business/myInactiveProducts">
+              <Link to="/business/inactiveProducts">
                 <button className="btn-indigo bg-slate-500 hover:bg-slate-600 italic text-white/80">
                   View Inactive Products
                 </button>
