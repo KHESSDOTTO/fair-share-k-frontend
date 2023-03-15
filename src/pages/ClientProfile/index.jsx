@@ -109,7 +109,7 @@ export function ClientProfile() {
             Log out
           </button>
         </div>
-        <div className="mt-6 bg-slate-100">
+        <div className="mt-6">
           <h1 className="font-semibold mb-4 text-3xl text-indigo-900 border-t-2 border-t-indigo-900 w-screen text-center pt-6">
             Your orders here
           </h1>

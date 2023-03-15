@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
-import img from "../../images/cover.jpg";
+import img from "../../images/background-log-in.png";
 import toast from "react-hot-toast";
 
 export function Login() {
@@ -38,8 +38,8 @@ export function Login() {
   }
 
   return (
-    <div className="w-screen min-h-screen flex flex-row">
-      <img src="../../images/background-log-in.png" alt="" className="w-1/2" />
+    <div className="bg-white/90 w-screen min-h-screen flex flex-row">
+      <img src={img} alt="" className="max-h-screen mx-auto" />
       <div className="flex flex-col justify-center w-1/2 items-start px-24">
         <section className="flex flex-col gap-12">
           <h1 className="text-5xl font-bold text-center">Log in</h1>
