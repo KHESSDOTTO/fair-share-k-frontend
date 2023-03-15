@@ -67,7 +67,7 @@ export function BusinessAdmin() {
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold pl-4">
               My orders
             </h2>
-            <div className="h-80 overflow-auto bg-white/80 rounded-xl border-2 mt-2 mb-6 h-80 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-auto bg-white rounded-xl border-2 mt-2 mb-6 h-80 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
               {!isLoading &&
                 myOrders.orders
                   .filter(
@@ -139,7 +139,7 @@ export function BusinessAdmin() {
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold pl-56">
               My Products
             </h2>
-            <div className="h-80 overflow-auto bg-slate-100/90 rounded-xl border-2 mt-2 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-auto bg-slate-100 rounded-xl border-2 mt-2 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
               {!isLoading &&
                 myProducts
                   .filter((cP) => cP.isActive === true)
@@ -201,7 +201,7 @@ export function BusinessAdmin() {
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold text-center">
               History
             </h2>
-            <div className="h-80 overflow-y-auto bg-white/80 rounded-xl border-2 mt-2 mb-6 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-y-auto bg-white rounded-xl border-2 mt-2 mb-6 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
               {!isLoading &&
                 myOrders.orders
                   .filter(
@@ -255,7 +255,7 @@ export function BusinessAdmin() {
                             {currentOrder.status}
                           </h2>
                         </div>
-                        <div className="w-2/10">
+                        <div>
                           <button
                             value={currentOrder._id}
                             className="btn-indigo"
@@ -264,7 +264,7 @@ export function BusinessAdmin() {
                             View
                           </button>
                         </div>
-                        <div className="w-1/10">
+                        <div>
                           <button
                             value={currentOrder._id}
                             className="btn-indigo bg-red-400 hover:bg-red-500"
