@@ -30,7 +30,7 @@ export function BusinessProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-white/90">
+    <div className="min-h-screen">
       <BusinessNavBar />
       <section className="w-screen flex flex-col items-center">
         <h1 className="font-semibold mb-4 text-3xl text-indigo-900">

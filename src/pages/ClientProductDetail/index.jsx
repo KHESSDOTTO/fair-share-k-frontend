@@ -37,7 +37,7 @@ export function ClientProductDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-200">
+    <div className="min-h-screen">
       <ClientNavBar />
       <NameLogo product={selProduct} />
       <div className="flex w-9/12 flex-row mx-auto justify-end mt-2">
