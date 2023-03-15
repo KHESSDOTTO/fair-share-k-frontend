@@ -62,8 +62,8 @@ export function BusinessAdmin() {
         <h1 className="text-6xl text-indigo-900">Admin Page</h1>
       </div>
       {!isLoading && (
-        <div className="container border-none flex flex-col items-center w-screen">
-          <section className="w-10/12">
+        <div className="container border-none flex flex-col items-center w-screen mb-0 pb-4">
+          <section className="w-10/12 mt-8">
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold pl-4">
               My orders
             </h2>
@@ -135,11 +135,11 @@ export function BusinessAdmin() {
                   })}
             </div>
           </section>
-          <section className="w-10/12">
+          <section className="w-10/12 mt-8">
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold pl-56">
               My Products
             </h2>
-            <div className="h-80 overflow-auto bg-slate-100 rounded-xl border-2 mt-2 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-auto bg-slate-100 rounded-xl border-2 mt-2 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5">
               {!isLoading &&
                 myProducts
                   .filter((cP) => cP.isActive === true)
@@ -197,11 +197,11 @@ export function BusinessAdmin() {
               </Link>
             </div>
           </section>
-          <section className="w-10/12 mb-0 mt-10">
+          <section className="w-10/12 mt-8">
             <h2 className="border-b-2 border-b-indigo-900 text-2xl text-indigo-900 font-semibold text-center">
               History
             </h2>
-            <div className="h-80 overflow-y-auto bg-white rounded-xl border-2 mt-2 mb-6 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-y-auto bg-white rounded-xl border-2 mt-2 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
               {!isLoading &&
                 myOrders.orders
                   .filter(

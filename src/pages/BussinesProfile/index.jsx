@@ -30,7 +30,7 @@ export function BusinessProfile() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white/90">
       <BusinessNavBar />
       <section className="w-screen flex flex-col items-center">
         <h1 className="font-semibold mb-4 text-3xl text-indigo-900">
@@ -40,7 +40,7 @@ export function BusinessProfile() {
           src={form.picture}
           className="w-56 h-56 rounded-full mb-5 border-4 border-black"
         />
-        <div className="bg-white rounded-xl mb-2 justify-evenly flex flex-row gap-4 flex-nowrap items-start w-11/12 border-t-2 border-t-indigo-800 mx-auto box-border p-6">
+        <div className="bg-slate-200/80 rounded-xl mb-2 justify-evenly flex flex-row gap-4 flex-nowrap items-start w-11/12 border-t-2 border-t-indigo-800 mx-auto box-border p-6">
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Name</p>
             <p className="text-sm">{form.name}</p>

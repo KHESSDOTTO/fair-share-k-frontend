@@ -67,7 +67,7 @@ export function ClientProfile() {
           src={form.picture}
           className="w-56 h-56 rounded-full mb-5 border-4 border-black"
         ></img>
-        <div className="max-w-full justify-evenly items-start flex flex-row flex-wrap gap-4 flex-wrap w-11/12 border-t border-t-indigo-800 mx-auto box-border p-6">
+        <div className="bg-white max-w-full justify-evenly items-start flex flex-row flex-wrap gap-4 flex-wrap w-11/12 border-t-2 border-t-indigo-800 mx-auto box-border p-6 rounded-xl">
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Name</p>
             <p className="text-sm">{form.name}</p>
@@ -96,89 +96,93 @@ export function ClientProfile() {
             <p className="font-semibold text-lg">Contact Phone</p>
             <p className="text-sm">{form.contactPhone}</p>
           </div>
-          <div className="flex flex-row justify-center items-center gap-8">
-            <Link to={"/user/profile/edit"}>
-              <button className="btn-indigo">Edit</button>
-            </Link>
-            <button
-              onClick={handleLogOut}
-              type="submit"
-              className="btn-indigo bg-red-500 hover:bg-red-600"
-            >
-              Log out
-            </button>
-          </div>
         </div>
-        <h1 className="font-semibold mb-4 text-3xl text-indigo-900 border-t-2 border-t-indigo-900 w-screen mt-6 text-center pt-6">
-          Your orders here
-        </h1>
-        <section className="container bg-white flex flex-col items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5 w-9/12 bg-slate-100 border-2 border-indigo-900 rounded-3xl">
-          {!isLoading &&
-            orders.map((currentOrder) => {
-              return (
-                <article
-                  key={currentOrder._id}
-                  className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 py-2"
-                >
-                  <div className="w-2/10 flex flex-row justify-center">
-                    <img
-                      src={currentOrder.business.picture}
-                      alt="product picture"
-                      className="w-24 h-24 rounded-full max-h-full"
-                    />
-                  </div>
-                  <div className="w-3/10 flex flex-row justify-start">
-                    <ul>
-                      <li>
-                        <span className="font-semibold">- Business: </span>
-                        {currentOrder.business.name}
-                      </li>
-                      <li>
-                        <span className="font-semibold">- Product: </span>
-                        {currentOrder.product.name}
-                      </li>
-                      <li>
-                        <span className="font-semibold">- Price:</span>{" "}
-                        {`R$ ${Math.floor(currentOrder.product.price / 100)},${
-                          String(currentOrder.product.price)[
-                            String(currentOrder.product.price).length - 2
-                          ]
-                        }${
-                          String(currentOrder.product.price)[
-                            String(currentOrder.product.price).length - 1
-                          ]
-                        }`}
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="w-36 flex justify-start flex-wrap">
-                    <h2 className="w-11/12 font-bold font-color-gray-200">
-                      <span className="font-semibold">Status: </span>
-                      {currentOrder.status}
-                    </h2>
-                  </div>
-                  <div className="w-2/10">
-                    <button
-                      value={currentOrder._id}
-                      className="btn-indigo"
-                      onClick={handleNavigate}
-                    >
-                      View
-                    </button>
-                  </div>
-                  <div className="w-1/10">
-                    <button
-                      value={currentOrder._id}
-                      className="btn-indigo bg-red-400 hover:bg-red-500"
-                      onClick={handleDeleteOrder}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
-        </section>
+        <div className="flex flex-row justify-center items-center gap-8 mt-2">
+          <Link to={"/user/profile/edit"}>
+            <button className="btn-indigo">Edit</button>
+          </Link>
+          <button
+            onClick={handleLogOut}
+            type="submit"
+            className="btn-indigo bg-red-500 hover:bg-red-600"
+          >
+            Log out
+          </button>
+        </div>
+        <div className="mt-6 bg-slate-100">
+          <h1 className="font-semibold mb-4 text-3xl text-indigo-900 border-t-2 border-t-indigo-900 w-screen text-center pt-6">
+            Your orders here
+          </h1>
+          <section className="bg-white container flex flex-col items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5 w-9/12 bg-slate-100 border-2 border-indigo-900 rounded-3xl">
+            {!isLoading &&
+              orders.map((currentOrder) => {
+                return (
+                  <article
+                    key={currentOrder._id}
+                    className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 py-2"
+                  >
+                    <div className="w-2/10 flex flex-row justify-center">
+                      <img
+                        src={currentOrder.business.picture}
+                        alt="product picture"
+                        className="w-24 h-24 rounded-full max-h-full"
+                      />
+                    </div>
+                    <div className="w-3/10 flex flex-row justify-start">
+                      <ul>
+                        <li>
+                          <span className="font-semibold">- Business: </span>
+                          {currentOrder.business.name}
+                        </li>
+                        <li>
+                          <span className="font-semibold">- Product: </span>
+                          {currentOrder.product.name}
+                        </li>
+                        <li>
+                          <span className="font-semibold">- Price:</span>{" "}
+                          {`R$ ${Math.floor(
+                            currentOrder.product.price / 100
+                          )},${
+                            String(currentOrder.product.price)[
+                              String(currentOrder.product.price).length - 2
+                            ]
+                          }${
+                            String(currentOrder.product.price)[
+                              String(currentOrder.product.price).length - 1
+                            ]
+                          }`}
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="w-36 flex justify-start flex-wrap">
+                      <h2 className="w-11/12 font-bold font-color-gray-200">
+                        <span className="font-semibold">Status: </span>
+                        {currentOrder.status}
+                      </h2>
+                    </div>
+                    <div className="w-2/10">
+                      <button
+                        value={currentOrder._id}
+                        className="btn-indigo"
+                        onClick={handleNavigate}
+                      >
+                        View
+                      </button>
+                    </div>
+                    <div className="w-1/10">
+                      <button
+                        value={currentOrder._id}
+                        className="btn-indigo bg-red-400 hover:bg-red-500"
+                        onClick={handleDeleteOrder}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </article>
+                );
+              })}
+          </section>
+        </div>
       </section>
     </div>
   );

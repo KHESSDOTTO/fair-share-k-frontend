@@ -33,7 +33,7 @@ export function ClientFavorites() {
   }
 
   return (
-    <>
+    <div className="bg-stone-200">
       <ClientNavBar />
       <h1 className="w-1/3 font-semibold mb-6 text-3xl text-indigo-900 pl-28 pb-5 underline">
         Your favorites:
@@ -74,6 +74,6 @@ export function ClientFavorites() {
           })}
         </div>
       </section>
-    </>
+    </div>
   );
 }
