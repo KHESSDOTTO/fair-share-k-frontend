@@ -43,6 +43,16 @@ export function BusinessInactiveProducts() {
     }
   }
 
+  async function handleReactivate(e) {
+    try {
+      await api.put(`/api/product/reactivate/${e.target.value}`);
+      toast.success("Product reactivated.");
+      setReload(!reload);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-stone-400 pb-4">
       <BusinessNavBar />
@@ -80,13 +90,20 @@ export function BusinessInactiveProducts() {
                       </li>
                     </ul>
                   </div>
-                  <div className="flex flex-row gap-16">
+                  <div className="flex flex-row gap-8">
                     <button
                       value={cP._id}
                       className="btn-indigo italic"
                       onClick={handleNavigateProduct}
                     >
                       View
+                    </button>
+                    <button
+                      value={cP._id}
+                      className="btn-indigo bg-green-700 hover:bg-green-600 italic"
+                      onClick={handleReactivate}
+                    >
+                      Reactivate
                     </button>
                     <button
                       value={cP._id}

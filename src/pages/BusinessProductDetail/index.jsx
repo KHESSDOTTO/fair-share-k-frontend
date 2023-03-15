@@ -18,7 +18,6 @@ export function BusinessProductDetail() {
       try {
         const response = await api.get(`/api/product/get/${params.idProduct}`);
         setisLoading(false);
-        console.log(response.data);
         setProduct(response.data);
       } catch (err) {
         console.log(err);
@@ -46,6 +45,17 @@ export function BusinessProductDetail() {
       await api.put(`/api/product/inactivate/${params.idProduct}`);
       toast.success("Product inactivated!");
       navigate("/business/admin");
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong... Please try again.");
+    }
+  }
+
+  async function handleReactivate() {
+    try {
+      await api.put(`/api/product/reactivate/${params.idProduct}`);
+      toast.success("Product reactivated!");
+      navigate("/business/inactiveProducts");
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong... Please try again.");
@@ -109,13 +119,13 @@ export function BusinessProductDetail() {
                   toast("Scroll Down to edit the expiration date.");
                 }}
               >
-                Editar Produtos aqui
+                Edit Product here
               </button>
               <button
                 className="btn-indigo bg-red-500 shadow-lg shadow-lg hover:bg-red-600"
                 onClick={handleInactivate}
               >
-                Desativar produto
+                Inactivate product
               </button>
             </div>
           </div>
@@ -146,11 +156,18 @@ export function BusinessProductDetail() {
             </ul>
             <div className="mt-12 flex flex-row gap-8">
               <button
+                className="btn-indigo bg-green-600 shadow-lg shadow-lg hover:bg-green-700"
+                value={product._id}
+                onClick={handleReactivate}
+              >
+                Reactivate product
+              </button>
+              <button
                 className="btn-indigo bg-red-500 shadow-lg shadow-lg hover:bg-red-600"
                 value={product._id}
                 onClick={handleDelete}
               >
-                Excluir produto
+                Delete product
               </button>
             </div>
           </div>
