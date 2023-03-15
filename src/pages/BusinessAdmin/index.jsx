@@ -18,7 +18,7 @@ export function BusinessAdmin() {
         const response1 = await api.get("/api/order/get/myOrders");
         const response2 = await api.get("/api/product/get/myProducts");
         setMyOrders(response1.data);
-        setMyProducts(response2.data);
+        setMyProducts(response2.data.products);
         setisLoading(false);
       } catch (err) {
         console.log(err);
