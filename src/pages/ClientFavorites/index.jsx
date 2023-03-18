@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { api } from "../../api/api";
 import { ClientNavBar } from "../../components/ClientNavBar";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export function ClientFavorites() {

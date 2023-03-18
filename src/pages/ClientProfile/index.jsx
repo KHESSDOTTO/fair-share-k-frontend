@@ -2,17 +2,16 @@ import { useState, useEffect } from "react";
 import { api } from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
 import { ClientNavBar } from "../../components/ClientNavBar";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
+import { ModalLogout } from "../../components/Modal/ModalLogout";
 import toast from "react-hot-toast";
 
 export function ClientProfile() {
   const [form, setForm] = useState([]),
     [orders, setOrders] = useState([]),
-    navigate = useNavigate(),
-    context = useContext(AuthContext);
-  const [isLoading, setisLoading] = useState(true),
-    [reload, setReload] = useState(false);
+    [isLoading, setisLoading] = useState(true),
+    [reload, setReload] = useState(false),
+    [showModal, setShowModal] = useState(false),
+    navigate = useNavigate();
 
   useEffect(() => {
     async function fetchForms() {
@@ -46,11 +45,8 @@ export function ClientProfile() {
     fetchForms();
   }, [reload]);
 
-  function handleLogOut() {
-    localStorage.removeItem("loggedInUser");
-    context.setLoggedInUser(null);
-    console.log("I am here");
-    navigate("/");
+  function funcShowModal() {
+    setShowModal(!showModal);
   }
 
   async function handleDeleteOrder(e) {
@@ -75,6 +71,7 @@ export function ClientProfile() {
   return (
     <div className="min-h-screen mx-0">
       <ClientNavBar />
+      <ModalLogout isOpen={showModal} changeModal={funcShowModal} />
       <section className="w-fit flex flex-col items-center">
         <h1 className="font-semibold mb-4 text-3xl text-black">
           Your profile here
@@ -117,7 +114,7 @@ export function ClientProfile() {
           <Link to={"/user/profile/edit"}>
             <button className="btn-indigo bg-indigo-500/90">Edit</button>
           </Link>
-          <button onClick={handleLogOut} type="submit" className="btn-red">
+          <button onClick={funcShowModal} type="submit" className="btn-red">
             Log out
           </button>
         </div>
