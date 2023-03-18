@@ -1,19 +1,33 @@
 import { useState, useEffect } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
+import { ModalLogout } from "../../components/Modal/ModalLogout";
 import { BusinessNavBar } from "../../components/BusinessNavBar";
 
 export function BusinessProfile() {
   const [form, setForm] = useState([]),
-    navigate = useNavigate(),
-    context = useContext(AuthContext);
+    [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     async function fetchForms() {
       try {
         const response = await api.get("/api/user/get");
+        const matchCnpj = response.data.cnpj.match(
+          /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/
+        );
+        let matchPhone;
+        if (response.data.contactPhone.length === 10) {
+          matchPhone = response.data.contactPhone.match(
+            /^(\d{2})(\d{4})(\d{4})/
+          );
+        }
+        if (response.data.contactPhone.length === 11) {
+          matchPhone = response.data.contactPhone.match(
+            /^(\d{2})(\d{5})(\d{4})/
+          );
+        }
+        response.data.contactPhone = `(${matchPhone[1]}) ${matchPhone[2]}-${matchPhone[3]}`;
+        response.data.cnpj = `${matchCnpj[1]}.${matchCnpj[2]}.${matchCnpj[3]}/${matchCnpj[4]}- ${matchCnpj[5]}`;
         setForm(response.data);
       } catch (err) {
         console.log(err);
@@ -22,25 +36,23 @@ export function BusinessProfile() {
     fetchForms();
   }, []);
 
-  function handleLogOut() {
-    localStorage.removeItem("loggedInUser");
-    context.setLoggedInUser(null);
-    console.log("I am here");
-    navigate("/");
+  function funcShowModal() {
+    setShowModal(!showModal);
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-fit">
       <BusinessNavBar />
-      <section className="w-screen flex flex-col items-center">
-        <h1 className="font-semibold mb-4 text-3xl text-indigo-900">
+      <ModalLogout isOpen={showModal} changeModal={funcShowModal} />
+      <section className="w-fit flex flex-col items-center">
+        <h1 className="font-semibold mb-4 text-3xl text-black">
           Your profile here
         </h1>
         <img
           src={form.picture}
-          className="w-56 h-56 rounded-full mb-5 border-4 border-black"
+          className="w-56 h-56 rounded-full mb-5 border-2 border-black"
         />
-        <div className="bg-slate-200/80 rounded-xl mb-2 justify-evenly flex flex-row gap-4 flex-nowrap items-start w-11/12 border-t-2 border-t-indigo-800 mx-auto box-border p-6">
+        <div className="bg-white rounded-xl mb-2 justify-evenly flex flex-row gap-4 flex-nowrap items-start w-fit border border-green-900 border-t-4 border-t-green-800 box-border p-6">
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Name</p>
             <p className="text-sm">{form.name}</p>
@@ -76,10 +88,10 @@ export function BusinessProfile() {
         </div>
         <div className="flex flex-row justify-center items-center gap-10 mt-2 pb-4">
           <Link to={"/business/profile/edit"}>
-            <button className="btn-indigo">Edit</button>
+            <button className="btn-green">Edit</button>
           </Link>
           <button
-            onClick={handleLogOut}
+            onClick={funcShowModal}
             type="submit"
             className="btn-indigo bg-red-500 hover:bg-red-600"
           >

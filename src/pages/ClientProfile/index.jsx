@@ -18,7 +18,7 @@ export function ClientProfile() {
       try {
         let response = await api.get("/api/user/get");
         const responseOrders = await api.get("/api/order/get/myOrders");
-        const matchCpf = response.data.contactPhone.match(
+        const matchCpf = response.data.cpf.match(
           /^(\d{3})(\d{3})(\d{3})(\d{2})/
         );
         let matchPhone;
