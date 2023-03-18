@@ -77,7 +77,7 @@ export function BusinessProductDetail() {
   return (
     <div className="pb-6 min-h-screen">
       <BusinessNavBar />
-      <section className="container flex flex-row justify-center items-center mx-auto mt-5 py-5 w-11/12 bg-slate-100 border-2 border-indigo-900 rounded-xl">
+      <section className="flex flex-row justify-center items-center mx-auto mt-5 py-5 w-11/12 bg-slate-100 border-2 border-black rounded-xl">
         {!isLoading && (
           <div className="w-1/2 p-auto border-r-2 border-slate-200 flex justify-center items-center">
             <img
@@ -116,7 +116,9 @@ export function BusinessProductDetail() {
                 className="btn-indigo bg-yellow-500 shadow-lg hover:bg-yellow-600"
                 onClick={() => {
                   setShowForm(!showForm);
-                  toast("Scroll Down to edit the expiration date.");
+                  if (!showForm) {
+                    toast("Scroll Down to edit the expiration date.");
+                  }
                 }}
               >
                 Edit Product here
@@ -174,8 +176,8 @@ export function BusinessProductDetail() {
         )}
       </section>
       {showForm && (
-        <div className="pl-12">
-          <form className="pt-4 border-t-2 border-t-indigo-900">
+        <div className="mt-8">
+          <form className="pt-4 border-t-2 border-t-black">
             <h2 className="text-2xl font-bold underline mb-4 h-8 align-end pl-12 text-black/80 h-8">
               Edit:
             </h2>
@@ -194,11 +196,11 @@ export function BusinessProductDetail() {
           <button
             onClick={handleSubmit}
             type="button"
-            className="btn-indigo ml-12 my-4"
+            className="btn-green ml-12 my-4"
           >
             Save
           </button>
-          <footer className="text-xs italic mt-2">
+          <footer className="text-xs italic mt-2 pl-4">
             <p>
               Other changes are not allowed. Please make another product to
               change name, description, picture and price.
