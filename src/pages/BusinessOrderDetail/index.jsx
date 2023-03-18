@@ -79,8 +79,8 @@ export function BusinessOrderDetail() {
                     .
                   </li>
                   <li className="w-96 flex flex-row justify-start items-start flex-nowrap">
-                    <h3 className="font-semibold w-64">- Description: </h3>
-                    <p className="italic text-sm">
+                    <h3 className="font-semibold w-fit">- Description: </h3>
+                    <p className="ml-2 italic text-sm">
                       {order.product.description}
                     </p>
                   </li>
@@ -97,7 +97,7 @@ export function BusinessOrderDetail() {
               <button
                 value="REJECTED BY COMPANY"
                 onClick={changeOrderStatus}
-                className="btn-indigo bg-red-500 shadow-lg hover:bg-red-600"
+                className="btn-red bg-red-500 shadow-lg"
               >
                 Reject Order
               </button>
@@ -111,7 +111,7 @@ export function BusinessOrderDetail() {
               <button
                 value="CONCLUDED"
                 onClick={changeOrderStatus}
-                className="btn-indigo bg-green-500 shadow-lg hover:bg-green-600"
+                className="btn-green shadow-lg"
               >
                 Mark as concluded
               </button>

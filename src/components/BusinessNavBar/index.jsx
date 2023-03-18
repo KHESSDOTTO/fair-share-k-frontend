@@ -45,7 +45,7 @@ export function BusinessNavBar() {
             clipRule="evenodd"
           />
         </svg>
-        <button>All orders</button>
+        <button>Admin</button>
       </Link>
     </nav>
   );
