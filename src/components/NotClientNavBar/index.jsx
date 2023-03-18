@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 export function NotClientNavBar() {
   const NavBtnClass =
-    "flex flex-row items-center justify-center gap-2 w-32 transition px-3 py-1 rounded-lg drop-shadow box-border hover:border-2 hover:border-solid hover:border-indigo-800 hover:bg-indigo-500";
+    "flex flex-row items-center justify-center gap-2 w-32 transition px-3 py-1 rounded-lg drop-shadow box-border hover:border-2 hover:border-solid hover:border-green-400 hover:bg-green-300/30";
   return (
-    <nav className="h-16 text-lg border-b border-green-400 flex flex-row items-center justify-evenly p-2 bg-green-400/70 mb-8 font-semibold text-green-900 shadow-xl">
+    <nav className="h-16 text-lg border-b border-green-400 flex flex-row items-center justify-evenly p-2 bg-green-300/30 mb-8 font-semibold text-green-900 shadow-xl">
       <Link to="/signup" className={NavBtnClass}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
