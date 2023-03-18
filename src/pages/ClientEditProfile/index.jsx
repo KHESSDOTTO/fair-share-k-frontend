@@ -4,13 +4,15 @@ import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
 import { ClientNavBar } from "../../components/ClientNavBar";
 import toast from "react-hot-toast";
+import { ModalDeleteUser } from "../../components/Modal/ModalDeleteUser";
 
 export function ClientEditProfile() {
-  const { setLoggedInUser } = useContext(AuthContext);
-  const [reload, setReload] = useState(false);
-  const [img, setImg] = useState("");
-  const [order, setOrder] = useState();
-  const navigate = useNavigate();
+  const { setLoggedInUser } = useContext(AuthContext),
+    [reload, setReload] = useState(false),
+    [img, setImg] = useState(""),
+    [order, setOrder] = useState(),
+    [showModal, setShowModal] = useState(false),
+    navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -27,7 +29,6 @@ export function ClientEditProfile() {
         const response = await api.get("/api/user/get");
         setForm(response.data);
         setOrder(response.data.order);
-
         console.log(response.data);
       } catch (err) {
         console.log(err);
@@ -58,7 +59,6 @@ export function ClientEditProfile() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      console.log("antes do handleupload");
       const imgURL = await handleUpload();
       await api.put("/api/user/edit", { ...form, picture: imgURL });
       toast.success("Alterations saved!");
@@ -76,22 +76,14 @@ export function ClientEditProfile() {
     navigate("/");
   }
 
-  async function handleDeleteUser(e) {
-    try {
-      await api.delete("/api/user/delete");
-      localStorage.removeItem("loggedInUser");
-      setLoggedInUser(null);
-      toast.success("User deleted.");
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-      toast.error("Something went wrong... please try again.");
-    }
+  function funcShowModal() {
+    setShowModal(!showModal);
   }
 
   return (
     <>
       <ClientNavBar />
+      <ModalDeleteUser isOpen={showModal} changeModal={funcShowModal} />
       <div className="container pb-6 mb-0 px-20">
         <form className="space-y-8 divide-y divide-gray-200">
           <div className="space-y-8 divide-y divide-gray-200">
@@ -104,8 +96,6 @@ export function ClientEditProfile() {
                 <h3 className="text-base font-semibold leading-6 text-gray-900">
                   Your Profile Picture:
                 </h3>
-                {/* 
-                <label htmlFor="formImg">Your Profile Picture:</label> */}
                 <input
                   name="picture"
                   type="file"
@@ -255,7 +245,7 @@ export function ClientEditProfile() {
                 Log out
               </button>
               <button
-                onClick={handleDeleteUser}
+                onClick={funcShowModal}
                 type="button"
                 className="btn-indigo bg-black hover:bg-gray-800"
               >
