@@ -33,29 +33,34 @@ export function ClientFavorites() {
   }
 
   return (
-    <div className="bg-stone-200">
+    <div>
       <ClientNavBar />
-      <h1 className="w-1/3 font-semibold mb-6 text-3xl text-indigo-900 pl-28 pb-5 underline">
+      <h1 className="w-1/3 font-semibold text-3xl text-black pl-28 pb-5 underline">
         Your favorites:
       </h1>
       <section className="w-screen flex flex-col items-center min-h-screen">
-        <div className="w-8/12 pt-8 rounded flex flex-col items-center gap-2">
+        <div className="w-8/12 pt-2 rounded flex flex-col items-center gap-2">
           {favorites.map((currentFavorite) => {
+            console.log("Current favorite below:");
+            console.log(currentFavorite);
             return (
               <article
                 key={currentFavorite._id}
-                className="flex bg-white flex-row border-2 border-indigo-200 items-center w-10/12 rounded-xl w-11/12 px-4 py-6 h-28"
+                className="flex bg-white flex-row border border-indigo-900 items-center w-10/12 rounded-xl w-full px-4 py-6 h-40"
               >
                 <div className="w-1/3 h-full flex flex-row justify-center">
                   <img
                     src={currentFavorite.picture}
-                    className="w-24 h-24 rounded-full max-h-full border-2 border-black"
+                    className="w-24 h-24 rounded-full max-h-full border-2 border-black my-auto"
                   />
                 </div>
                 <div className="w-1/3 flex flex-col flex-nowrap items-center gap-2">
-                  <h2 className="text-center text-2xl font-semibold text-indigo-900">
+                  <h2 className="text-center text-3xl font-semibold text-gray-700">
                     {currentFavorite.name}
                   </h2>
+                  <h3 className="text-center font-semibold italic text-gray-700 text-sm">
+                    Neighborhood: {currentFavorite.neighborhood}
+                  </h3>
                   <h3 className="italic text-center text-sm">
                     Address: {currentFavorite.address}
                   </h3>
@@ -63,7 +68,7 @@ export function ClientFavorites() {
                 <div className="w-1/3 text-center">
                   <button
                     value={currentFavorite._id}
-                    className="btn-indigo"
+                    className="btn-indigo bg-indigo-500"
                     onClick={handleUnfollow}
                   >
                     Unfollow

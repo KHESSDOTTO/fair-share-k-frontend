@@ -10,4 +10,10 @@
   .btn-indigo {
     @apply bg-indigo-500 text-white py-2 px-3 rounded-md shadow-md hover:bg-indigo-600;
   }
+  .btn-green {
+    @apply bg-green-700 text-white py-2 px-3 rounded-md shadow-md hover:bg-green-600;
+  }
+  .btn-red {
+    @apply bg-red-400 text-white py-2 px-3 rounded-md shadow-md hover:bg-red-500;
+  }
 }

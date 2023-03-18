@@ -80,8 +80,8 @@ export function ClientOrderDetail() {
                     .
                   </li>
                   <li className="w-96 flex flex-row justify-start items-start flex-nowrap">
-                    <h3 className="font-semibold w-64">- Description: </h3>
-                    <p className="italic text-sm">
+                    <h3 className="font-semibold w-fit">- Description: </h3>
+                    <p className="ml-2 italic text-sm">
                       {orders.product.description}
                     </p>
                   </li>
@@ -95,7 +95,7 @@ export function ClientOrderDetail() {
               </div>
             </section>
             <div>
-              <button onClick={cancelOrder} className="btn-indigo">
+              <button onClick={cancelOrder} className="btn-green">
                 Cancel order
               </button>
             </div>

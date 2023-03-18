@@ -23,10 +23,10 @@ export function ProductFeed(props) {
   console.log(productFeed);
   return (
     <section className="w-screen flex flex-col items-center">
-      <h1 className="font-semibold mb-4 text-3xl text-indigo-900">
-        Produtos disponíveis
+      <h1 className="font-semibold mb-4 text-4xl text-black">
+        Available products
       </h1>
-      <div className="flex flex-row justify-evenly flex-wrap w-11/12 border-t border-t-indigo-800 mx-auto box-border py-6 px-4">
+      <div className="flex flex-row justify-evenly flex-wrap w-11/12 border-t-2 border-t-gray-700/20 mx-auto box-border py-6 px-4">
         {!isLoading &&
           productFeed
             .filter((cE) => cE.isActive === true)
@@ -42,12 +42,12 @@ export function ProductFeed(props) {
               return (
                 <article
                   key={cE._id}
-                  className="container bg-white border border-indigo-300 flex flex-col justify-between items-center w-1/4 gap-4 justify-evenly py-5"
+                  className="container bg-white border border-green-700 flex flex-col justify-between items-center w-1/4 gap-4 justify-evenly py-5"
                 >
                   <img
                     src={cE.picture}
                     alt="Product appearence."
-                    className="rounded-2xl shadow-xl max-h-48 max-w-full"
+                    className="rounded-2xl shadow-xl h-48 max-w-full"
                   />
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex flex-col items-center">
@@ -66,7 +66,7 @@ export function ProductFeed(props) {
                     </p>
                   </div>
                   <Link to={`/user/viewMagic/${cE._id}`}>
-                    <button className="btn-indigo w-28">See details</button>
+                    <button className="btn-green w-28">See details</button>
                   </Link>
                 </article>
               );

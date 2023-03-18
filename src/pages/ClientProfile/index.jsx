@@ -17,8 +17,24 @@ export function ClientProfile() {
   useEffect(() => {
     async function fetchForms() {
       try {
-        const response = await api.get("/api/user/get");
+        let response = await api.get("/api/user/get");
         const responseOrders = await api.get("/api/order/get/myOrders");
+        const matchCpf = response.data.contactPhone.match(
+          /^(\d{3})(\d{3})(\d{3})(\d{2})/
+        );
+        let matchPhone;
+        if (response.data.contactPhone.length === 10) {
+          matchPhone = response.data.contactPhone.match(
+            /^(\d{2})(\d{4})(\d{4})/
+          );
+        }
+        if (response.data.contactPhone.length === 11) {
+          matchPhone = response.data.contactPhone.match(
+            /^(\d{2})(\d{5})(\d{4})/
+          );
+        }
+        response.data.contactPhone = `(${matchPhone[1]}) ${matchPhone[2]}-${matchPhone[3]}`;
+        response.data.cpf = `${matchCpf[1]}.${matchCpf[2]}.${matchCpf[3]}-${matchCpf[4]}`;
         setForm(response.data);
         setOrders(responseOrders.data.orders);
         setisLoading(false);
@@ -57,17 +73,17 @@ export function ClientProfile() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mx-0">
       <ClientNavBar />
-      <section className="w-screen flex flex-col items-center">
-        <h1 className="font-semibold mb-4 text-3xl text-indigo-900">
+      <section className="w-fit flex flex-col items-center">
+        <h1 className="font-semibold mb-4 text-3xl text-black">
           Your profile here
         </h1>
         <img
           src={form.picture}
-          className="w-56 h-56 rounded-full mb-5 border-4 border-black"
+          className="w-56 h-56 rounded-full mb-5 border-2 border-black"
         ></img>
-        <div className="bg-white max-w-full justify-evenly items-start flex flex-row flex-wrap gap-4 flex-wrap w-11/12 border-t-2 border-t-indigo-800 mx-auto box-border p-6 rounded-xl">
+        <div className="bg-white max-w-full justify-evenly items-start flex flex-row flex-nowrap gap-4 flex-wrap w-fit border-t-4 border border-green-900/40 border-t-green-800/80 box-border p-6 rounded-xl">
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Name</p>
             <p className="text-sm">{form.name}</p>
@@ -82,7 +98,7 @@ export function ClientProfile() {
           </div>
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Address</p>
-            <p className="text-sm">{form.address}</p>
+            <p className="text-xs italic">{form.address}</p>
           </div>
           <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="font-semibold text-lg">Neighborhood</p>
@@ -99,27 +115,23 @@ export function ClientProfile() {
         </div>
         <div className="flex flex-row justify-center items-center gap-8 mt-2">
           <Link to={"/user/profile/edit"}>
-            <button className="btn-indigo">Edit</button>
+            <button className="btn-indigo bg-indigo-500/90">Edit</button>
           </Link>
-          <button
-            onClick={handleLogOut}
-            type="submit"
-            className="btn-indigo bg-red-500 hover:bg-red-600"
-          >
+          <button onClick={handleLogOut} type="submit" className="btn-red">
             Log out
           </button>
         </div>
         <div className="mt-6">
-          <h1 className="font-semibold mb-4 text-3xl text-indigo-900 border-t-2 border-t-indigo-900 w-screen text-center pt-6">
+          <h1 className="font-semibold mb-4 text-3xl text-black border-t border-t-black/40 w-screen text-center pt-6">
             Your orders here
           </h1>
-          <section className="bg-white container flex flex-col items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5 w-9/12 bg-slate-100 border-2 border-indigo-900 rounded-3xl">
+          <section className="bg-white container flex flex-col items-center justify-between flex-wrap mt-5 py-5 w-9/12 bg-slate-100 border-2 border-black rounded-3xl">
             {!isLoading &&
               orders.map((currentOrder) => {
                 return (
                   <article
                     key={currentOrder._id}
-                    className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 py-2"
+                    className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 py-6 border-b-green-900/10"
                   >
                     <div className="w-2/10 flex flex-row justify-center">
                       <img
@@ -163,7 +175,7 @@ export function ClientProfile() {
                     <div className="w-2/10">
                       <button
                         value={currentOrder._id}
-                        className="btn-indigo"
+                        className="btn-green bg-green-600/60"
                         onClick={handleNavigate}
                       >
                         View
@@ -172,7 +184,7 @@ export function ClientProfile() {
                     <div className="w-1/10">
                       <button
                         value={currentOrder._id}
-                        className="btn-indigo bg-red-400 hover:bg-red-500"
+                        className="btn-red"
                         onClick={handleDeleteOrder}
                       >
                         Delete

@@ -41,7 +41,7 @@ export function ClientProductDetail() {
       <ClientNavBar />
       <NameLogo product={selProduct} />
       <div className="flex w-9/12 flex-row mx-auto justify-end mt-2">
-        <button className="btn-indigo" onClick={addLike}>
+        <button className="btn-green bg-green-600/70" onClick={addLike}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

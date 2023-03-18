@@ -4,7 +4,7 @@ export function NotClientNavBar() {
   const NavBtnClass =
     "flex flex-row items-center justify-center gap-2 w-32 transition px-3 py-1 rounded-lg drop-shadow box-border hover:border-2 hover:border-solid hover:border-indigo-800 hover:bg-indigo-500";
   return (
-    <nav className="h-16 text-lg border-b-2 border-indigo-400 flex flex-row items-center justify-evenly p-2 bg-indigo-700 mb-8 font-semibold text-indigo-100 shadow-xl">
+    <nav className="h-16 text-lg border-b border-green-400 flex flex-row items-center justify-evenly p-2 bg-green-400/70 mb-8 font-semibold text-green-900 shadow-xl">
       <Link to="/signup" className={NavBtnClass}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

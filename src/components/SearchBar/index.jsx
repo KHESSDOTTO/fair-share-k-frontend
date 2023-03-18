@@ -15,7 +15,7 @@ export function SearchBar(props) {
   }, []);
   return (
     <div>
-      <form className="bg-white rounded-2xl w-9/12 flex justify-center align-center mb-6 mx-auto border border-black">
+      <form className="bg-white rounded-2xl w-9/12 flex justify-center align-center mb-6 mx-auto border border-green-900">
         <input
           type="search"
           id="search"

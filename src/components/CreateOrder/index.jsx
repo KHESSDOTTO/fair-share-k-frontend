@@ -25,9 +25,9 @@ export function CreateOrder(props) {
   }
 
   return (
-    <div className="flex flex-row justify-center mt-2.5">
+    <div className="flex flex-row justify-center mt-8">
       <button
-        className="btn-indigo shadow-indigo-800 shadow-lg"
+        className="btn-indigo shadow-indigo-900 shadow-md"
         onClick={handleClick}
       >
         Confirm order!
