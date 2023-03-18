@@ -2,6 +2,7 @@ import { api } from "../../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
+import toast from "react-hot-toast";
 
 export function ModalDeleteUser(props) {
   const { isOpen, changeModal } = props,
@@ -10,6 +11,7 @@ export function ModalDeleteUser(props) {
 
   async function handleDeleteUser(e) {
     try {
+      e.preventDefault();
       await api.delete("/api/user/delete");
       localStorage.removeItem("loggedInUser");
       context.setLoggedInUser(null);
@@ -23,7 +25,7 @@ export function ModalDeleteUser(props) {
 
   if (isOpen) {
     return (
-      <div className="z-50 bg-black/80 flex flex-col items-center justify-center border-2 fixed top-0 bottom-0 right-0 left-0 shadow-black shadow-lg">
+      <div className="z-50 bg-black/70 flex flex-col items-center justify-center border-2 fixed top-0 bottom-0 right-0 left-0 shadow-black shadow-lg">
         <div className="w-1/2 h-64 bg-stone-200 rounded-md p-auto m-auto flex flex-col items-center pb-4">
           <div className="w-11/12 border-b-2 border-gray-400/40 h-2/4 rounded-t-md flex flex-row justify-center items-center">
             <h1 className="text-3xl font bold">

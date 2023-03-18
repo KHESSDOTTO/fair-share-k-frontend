@@ -4,29 +4,40 @@ import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
 import img from "../../images/background-log-in.png";
 import toast from "react-hot-toast";
+import { ModalReactivateUser } from "../../components/Modal/ModalReactivateUser";
 
 export function Login() {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
+  const [showModal, setShowModal] = useState(false),
+    [form, setForm] = useState({
+      email: "",
+      password: "",
+    }),
+    navigate = useNavigate(),
+    { setLoggedInUser } = useContext(AuthContext);
 
-  const navigate = useNavigate();
-  const { setLoggedInUser } = useContext(AuthContext);
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  function funcShowModal() {
+    setShowModal(!showModal);
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       const response = await api.post("/api/user/login", form);
+      if (!response.data.user.isActive) {
+        funcShowModal();
+        return;
+      }
       setLoggedInUser({ ...response.data });
       console.log(response);
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
       if (response.data.user.type === "BUSINESS") {
         navigate("/business/admin");
-      } else {
+      }
+      if (response.data.user.type === "CLIENT") {
         navigate("/user/discover");
       }
     } catch (error) {
@@ -37,8 +48,14 @@ export function Login() {
     }
   }
 
+  console.log("showModal");
+  console.log(showModal);
+
   return (
     <div className="bg-white/90 w-screen min-h-screen flex flex-row">
+      {showModal && (
+        <ModalReactivateUser changeModal={funcShowModal} form={form} />
+      )}
       <img src={img} alt="" className="max-h-screen mx-auto" />
       <div className="flex flex-col justify-center w-1/2 items-start px-24">
         <section className="flex flex-col gap-12">
