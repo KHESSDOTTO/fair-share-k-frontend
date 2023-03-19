@@ -13,6 +13,7 @@ export function ClientDiscover() {
   return (
     <div className="min-h-screen">
       <ClientNavBar />
+      <div className="h-8"></div>
       <SearchBar changeSearch={changeSearch} />
       <ProductFeed search={search} />
     </div>

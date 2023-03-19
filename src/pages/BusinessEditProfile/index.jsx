@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
 import { BusinessNavBar } from "../../components/BusinessNavBar";
+import { ModalDeleteUser } from "../../components/Modal/ModalDeleteUser";
 import toast from "react-hot-toast";
 
 export function BusinessEditProfile() {
-  const { setLoggedInUser } = useContext(AuthContext);
-  const [reload, setReload] = useState(false);
-  const [img, setImg] = useState("");
-  const navigate = useNavigate();
+  const { setLoggedInUser } = useContext(AuthContext),
+    [reload, setReload] = useState(false),
+    [img, setImg] = useState(""),
+    [showModal, setShowModal] = useState(false),
+    navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -76,24 +78,14 @@ export function BusinessEditProfile() {
     navigate("/");
   }
 
-  async function handleDeleteUser(e) {
-    try {
-      e.preventDefault();
-      await api.delete("/api/user/delete");
-      localStorage.removeItem("loggedInUser");
-      setLoggedInUser(null);
-      toast.success("User deleted.");
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-      toast.error("Something went wrong... please try again.");
-      navigate("/");
-    }
+  function funcShowModal() {
+    setShowModal(!showModal);
   }
 
   return (
     <>
       <BusinessNavBar />
+      <ModalDeleteUser isOpen={showModal} changeModal={funcShowModal} />
       <div className="container pb-8 mb-0">
         <form className="space-y-8 divide-y divide-gray-200">
           <div className="space-y-8 divide-y divide-gray-200">
@@ -106,8 +98,6 @@ export function BusinessEditProfile() {
                 <h3 className="text-base font-semibold leading-6 text-gray-900">
                   Your Profile Picture:
                 </h3>
-                {/* 
-          <label htmlFor="formImg">Your Profile Picture:</label> */}
                 <input
                   name="picture"
                   type="file"
@@ -276,7 +266,7 @@ export function BusinessEditProfile() {
                   Log out
                 </button>
                 <button
-                  onClick={handleDeleteUser}
+                  onClick={funcShowModal}
                   type="button"
                   className="btn-indigo bg-black hover:bg-gray-800"
                 >

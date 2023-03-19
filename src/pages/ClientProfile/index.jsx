@@ -72,7 +72,7 @@ export function ClientProfile() {
     <div className="min-h-screen mx-0">
       <ClientNavBar />
       <ModalLogout isOpen={showModal} changeModal={funcShowModal} />
-      <section className="w-fit flex flex-col items-center">
+      <section className="w-fit flex flex-col items-center mt-4">
         <h1 className="font-semibold mb-4 text-3xl text-black">
           Your profile here
         </h1>
@@ -119,22 +119,22 @@ export function ClientProfile() {
           </button>
         </div>
         <div className="mt-6">
-          <h1 className="font-semibold mb-4 text-3xl text-black border-t border-t-black/40 w-screen text-center pt-6">
+          <h1 className="font-semibold mb-4 text-3xl text-black border-t border-t-black/40 w-screen text-center pt-4">
             Your orders here
           </h1>
-          <section className="bg-white container flex flex-col items-center justify-between flex-wrap mt-5 py-5 w-9/12 bg-slate-100 border-2 border-black rounded-3xl">
+          <section className="bg-white container flex flex-col items-center justify-between flex-wrap mt-5 py-5 w-9/12 bg-slate-100 border-2 border-black">
             {!isLoading &&
               orders.map((currentOrder) => {
                 return (
                   <article
                     key={currentOrder._id}
-                    className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 py-6 border-b-green-900/10"
+                    className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-2 border-b-2 py-4 border-b-green-900/10 text-sm"
                   >
                     <div className="w-2/10 flex flex-row justify-center">
                       <img
                         src={currentOrder.business.picture}
                         alt="product picture"
-                        className="w-24 h-24 rounded-full max-h-full"
+                        className="w-16 h-16 rounded-full max-h-full"
                       />
                     </div>
                     <div className="w-3/10 flex flex-row justify-start">

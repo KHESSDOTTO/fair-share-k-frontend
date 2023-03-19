@@ -4,7 +4,7 @@ export function BusinessNavBar() {
   const NavBtnClass =
     "flex flex-row items-center justify-center gap-2 w-32 transition px-3 py-1 rounded-lg drop-shadow box-border hover:border-2 hover:border-solid hover:border-green-400 hover:bg-green-300/30";
   return (
-    <nav className="h-20 text-lg border-b border-green-400 flex flex-row items-center justify-evenly p-2 bg-green-300/30 mb-8 font-semibold text-green-900 shadow-xl">
+    <nav className="h-20 text-lg border-b border-green-400 flex flex-row items-center justify-evenly p-2 bg-green-300/30 font-semibold text-green-900 shadow-xl">
       <Link to="/business/create-form" className={NavBtnClass}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

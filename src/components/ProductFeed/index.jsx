@@ -26,7 +26,7 @@ export function ProductFeed(props) {
       <h1 className="font-semibold mb-4 text-4xl text-black">
         Available products
       </h1>
-      <div className="flex flex-row justify-evenly flex-wrap w-11/12 border-t-2 border-t-gray-700/20 mx-auto box-border py-6 px-4">
+      <div className="flex flex-row gap-2 justify-evenly flex-wrap w-11/12 border-t-2 border-t-gray-700/20 mx-auto box-border py-6">
         {!isLoading &&
           productFeed
             .filter((cE) => cE.isActive === true)
@@ -42,7 +42,7 @@ export function ProductFeed(props) {
               return (
                 <article
                   key={cE._id}
-                  className="container bg-white border border-green-700 flex flex-col justify-between items-center w-1/4 gap-4 justify-evenly py-5"
+                  className="container bg-white border border-green-700 flex flex-col justify-between items-center w-3/12 gap-4 justify-evenly py-5"
                 >
                   <img
                     src={cE.picture}
@@ -51,7 +51,9 @@ export function ProductFeed(props) {
                   />
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex flex-col items-center">
-                      <h2 className="font-semibold text-3xl">{cE.name}</h2>
+                      <h2 className="font-semibold text-3xl text-center">
+                        {cE.name}
+                      </h2>
                       <h2 className="font-semibold text-2xl">
                         {`R$ ${Math.floor(cE.price / 100)},${
                           String(cE.price)[String(cE.price).length - 2]

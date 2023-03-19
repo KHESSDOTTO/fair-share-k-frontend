@@ -41,10 +41,10 @@ export function BusinessProfile() {
   }
 
   return (
-    <div className="min-h-screen w-fit">
+    <div className="min-h-screen min-w-fit">
       <BusinessNavBar />
       <ModalLogout isOpen={showModal} changeModal={funcShowModal} />
-      <section className="w-fit flex flex-col items-center">
+      <section className="w-full flex flex-col items-center">
         <h1 className="font-semibold mb-4 text-3xl text-black">
           Your profile here
         </h1>

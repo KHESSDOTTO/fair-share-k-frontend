@@ -32,20 +32,20 @@ export function ClientFavorites() {
   }
 
   return (
-    <div>
+    <div className="pb-6">
       <ClientNavBar />
-      <h1 className="w-1/3 font-semibold text-3xl text-black pl-28 pb-5 underline">
+      <h1 className="w-1/3 font-semibold text-3xl text-black pl-28 underline my-6">
         Your favorites:
       </h1>
       <section className="w-screen flex flex-col items-center min-h-screen">
-        <div className="w-8/12 pt-2 rounded flex flex-col items-center gap-2">
+        <div className="w-8/12 pt-2 rounded flex flex-col items-center gap-1">
           {favorites.map((currentFavorite) => {
             console.log("Current favorite below:");
             console.log(currentFavorite);
             return (
               <article
                 key={currentFavorite._id}
-                className="flex bg-white flex-row border border-indigo-900 items-center w-10/12 rounded-xl w-full px-4 py-6 h-40"
+                className="flex bg-white flex-row border border-indigo-900 items-center w-9/12 rounded-lg w-full px-4 py-4 h-24"
               >
                 <div className="w-1/3 h-full flex flex-row justify-center">
                   <img
@@ -54,20 +54,20 @@ export function ClientFavorites() {
                   />
                 </div>
                 <div className="w-1/3 flex flex-col flex-nowrap items-center gap-2">
-                  <h2 className="text-center text-3xl font-semibold text-gray-700">
+                  <h2 className="text-center text-2xl font-bold text-gray-700">
                     {currentFavorite.name}
                   </h2>
                   <h3 className="text-center font-semibold italic text-gray-700 text-sm">
                     Neighborhood: {currentFavorite.neighborhood}
                   </h3>
-                  <h3 className="italic text-center text-sm">
+                  <h3 className="italic text-center text-xs">
                     Address: {currentFavorite.address}
                   </h3>
                 </div>
                 <div className="w-1/3 text-center">
                   <button
                     value={currentFavorite._id}
-                    className="btn-indigo bg-indigo-500"
+                    className="btn-indigo"
                     onClick={handleUnfollow}
                   >
                     Unfollow
