@@ -51,8 +51,8 @@ export function ClientOrderDetail() {
           src={bgImg}
           className="z-0 absolute top-0 bottom-0 right-0 left-0 w-full h-full opacity-40"
         />
-        <div className="z-10 m-auto py-12 flex flex-col gap-8 items-center bg-slate-100 border-2 border-black/90 rounded-xl w-1/2 drop-shadow-2xl drop-shadow-black">
-          <h1 className="text-center text-5xl mb-2 underline">
+        <div className="z-10 m-auto py-6 flex flex-col gap-8 items-center bg-slate-100 border-2 border-black/90 rounded-xl w-1/2 drop-shadow-2xl drop-shadow-black">
+          <h1 className="text-center text-5xl underline">
             Here is your order:
           </h1>
           {!isLoading && (
@@ -103,17 +103,17 @@ export function ClientOrderDetail() {
                   </div>
                 </div>
                 <div className="flex flex-row justify-center">
-                  <h3 className="mt-6 font-bold text-2xl">
+                  <h3 className="mt-4 font-bold text-2xl">
                     <span>Status: </span>
                     {order.status}.
                   </h3>
                 </div>
+                <div className="text-center mt-4">
+                  <button onClick={cancelOrder} className="btn-green">
+                    Cancel order
+                  </button>
+                </div>
               </section>
-              <div>
-                <button onClick={cancelOrder} className="btn-green">
-                  Cancel order
-                </button>
-              </div>
             </>
           )}
         </div>

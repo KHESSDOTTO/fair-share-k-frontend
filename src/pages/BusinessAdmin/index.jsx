@@ -58,16 +58,16 @@ export function BusinessAdmin() {
   return (
     <div className="min-h-screen w-screen mb-0">
       <BusinessNavBar />
-      <div className="bg-white rounded drop-shadow-lg flex justify-center items-center px-16 border-b-4 border-green-800/70 w-9/12 mx-auto p-6">
+      <div className="bg-white rounded drop-shadow-lg flex justify-center items-center px-16 border-b-4 border-green-800/70 w-9/12 mx-auto p-6 mt-6">
         <h1 className="text-6xl text-black">Admin Page</h1>
       </div>
       {!isLoading && (
         <div className="container border-none flex flex-col items-center w-screen mb-0 pb-4">
-          <section className="w-10/12 mt-8">
+          <section className="w-10/12 mt-4">
             <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold pl-4">
               My orders
             </h2>
-            <div className="h-80 overflow-auto bg-white rounded-xl border-2 mt-2 mb-6 h-80 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-auto bg-white rounded-xl border-2 mt-2 mb-6 h-80 flex flex-col items-center justify-start mx-auto flex-nowrap gap-2 mt-5 py-2">
               {!isLoading &&
                 myOrders.orders
                   .filter(
@@ -79,14 +79,14 @@ export function BusinessAdmin() {
                   .map((currentOrder) => {
                     return (
                       <article
-                        className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 pb-6"
+                        className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 pb-2"
                         key={currentOrder._id}
                       >
                         <div className="w-2/10 flex flex-row justify-center">
                           <img
                             src={currentOrder.product.picture}
                             alt="Product"
-                            className="w-24 h-24 rounded-lg shadow-xl max-h-full"
+                            className="w-20 h-20 rounded-lg shadow-xl max-h-full"
                           />
                         </div>
                         <div className="w-3/10 flex flex-row justify-start">
@@ -135,25 +135,25 @@ export function BusinessAdmin() {
                   })}
             </div>
           </section>
-          <section className="w-10/12 mt-8">
+          <section className="w-10/12 mt-4">
             <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold pl-56">
               My Products
             </h2>
-            <div className="h-80 overflow-auto bg-slate-100 rounded-xl border-2 mt-2 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5">
+            <div className="h-80 overflow-auto bg-slate-100 rounded-xl border-2 flex flex-col items-center justify-start mx-auto flex-nowrap gap-2 mt-5 py-2">
               {!isLoading &&
                 myProducts
                   .filter((cP) => cP.isActive === true)
                   .map((currentProduct) => {
                     return (
                       <article
-                        className={`w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-b-indigo-600/20 pb-6`}
+                        className={`w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-b-indigo-600/20 pb-2`}
                         key={currentProduct._id}
                       >
                         <div className="w-1/3 flex flex-row justify-center">
                           <img
                             src={currentProduct.picture}
                             alt="Product"
-                            className="w-24 h-24 rounded-lg shadow-xl max-h-full"
+                            className="w-20 h-20 rounded-lg shadow-xl max-h-full"
                           />
                         </div>
                         <div className="w-1/3 flex flex-row justify-start pl-12">
@@ -197,11 +197,11 @@ export function BusinessAdmin() {
               </Link>
             </div>
           </section>
-          <section className="w-10/12 mt-8">
+          <section className="w-10/12 mt-4">
             <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold text-center">
               History
             </h2>
-            <div className="h-80 overflow-y-auto bg-white rounded-xl border-2 mt-2 flex flex-col flex-nowrap items-center justify-between mx-auto flex-wrap gap-8 mt-5 py-5">
+            <div className="h-80 overflow-y-auto bg-white rounded-xl border-2 mt-2 flex flex-col flex-nowrap items-center justify-start mx-auto flex-wrap gap-2 mt-5 py-2">
               {!isLoading &&
                 myOrders.orders
                   .filter(
@@ -213,14 +213,14 @@ export function BusinessAdmin() {
                   .map((currentOrder) => {
                     return (
                       <article
-                        className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-gray-500 pb-6"
+                        className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-gray-500 pb-2"
                         key={currentOrder._id}
                       >
                         <div className="w-2/10 flex flex-row justify-center">
                           <img
                             src={currentOrder.product.picture}
                             alt="Product"
-                            className="w-24 h-24 rounded-lg shadow-xl max-h-full"
+                            className="w-20 h-20 rounded-lg shadow-xl max-h-full"
                           />
                         </div>
                         <div className="w-3/10 flex flex-row justify-start">

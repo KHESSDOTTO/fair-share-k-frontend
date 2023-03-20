@@ -44,7 +44,7 @@ export function BusinessProfile() {
     <div className="min-h-screen min-w-fit">
       <BusinessNavBar />
       <ModalLogout isOpen={showModal} changeModal={funcShowModal} />
-      <section className="w-full flex flex-col items-center">
+      <section className="w-full flex flex-col items-center mt-4">
         <h1 className="font-semibold mb-4 text-3xl text-black">
           Your profile here
         </h1>
@@ -86,7 +86,7 @@ export function BusinessProfile() {
             <p className="text-sm">{form.contactPhone}</p>
           </div>
         </div>
-        <div className="flex flex-row justify-center items-center gap-10 mt-2 pb-4">
+        <div className="flex flex-row justify-center items-center gap-10 mt-1 pb-4">
           <Link to={"/business/profile/edit"}>
             <button className="btn-green">Edit</button>
           </Link>

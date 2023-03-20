@@ -56,7 +56,7 @@ export function BusinessInactiveProducts() {
   return (
     <div className="min-h-screen bg-stone-300 pb-4">
       <BusinessNavBar />
-      <div className="flex flex-row justify-center py-8 bg-white/70 rounded drop-shadow-lg flex justify-center gap-20 items-end px-16 border-b-4 border-indigo-900 w-10/12 mx-auto mb-4">
+      <div className="flex flex-row justify-center py-8 bg-white/70 rounded drop-shadow-lg flex justify-center gap-20 items-end px-16 border-b-4 border-indigo-900 w-10/12 mx-auto my-4">
         <h1 className="text-4xl text-black italic">Inactive Products</h1>
       </div>
       <section className="w-2/3 italic overflow-auto bg-white/50 rounded-xl border-2 mt-2 h-80 flex flex-col items-center justify-between mx-auto flex-nowrap gap-8 mt-5 py-5">
