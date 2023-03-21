@@ -63,13 +63,17 @@ export function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     const clone = { ...form };
+    if (clone.password !== clone.confirmPassword) {
+      toast.error(
+        "The 'confirm password' field does not match the 'password' field."
+      );
+      return;
+    }
     if (clone.type !== "BUSINESS" && clone.type !== "CLIENT") {
-      // adc toast.
       toast.error("Select a valid type.");
       return;
     }
     if (clone.type === "BUSINESS" && clone.businessType === "Select a type") {
-      // adc toast.
       toast.error("Select a valid business type.");
       return;
     }
@@ -86,12 +90,13 @@ export function Signup() {
       // const imgURL = await handleUpload();
       await api.post("/api/user/signup", { ...clone });
       navigate("/login");
-      toast.success(
-        "User created!! An e-mail was send to your mailbox to confirm your account."
-      );
+      toast.success("User created!!");
+      // "User created!! An e-mail was send to your mailbox to confirm your account.
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong... please try again.");
+      toast.error(
+        "Something went wrong... make sure you have filled all the informations. Please try again."
+      );
     }
   }
 
@@ -138,7 +143,8 @@ export function Signup() {
                     htmlFor="last-name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Phone Number:
+                    Phone Number:{" "}
+                    <span className="text-xs italic">(only numbers)</span>
                   </label>
                   <div className="mt-1">
                     <input
@@ -310,7 +316,8 @@ export function Signup() {
                       htmlFor="cpf"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      CPF:
+                      CPF:{" "}
+                      <span className="text-xs italic">(only numbers)</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -332,7 +339,8 @@ export function Signup() {
                       htmlFor="cnpj"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      CNPJ:
+                      CNPJ:{" "}
+                      <span className="text-xs italic">(only numbers)</span>
                     </label>
                     <div className="mt-1">
                       <input
