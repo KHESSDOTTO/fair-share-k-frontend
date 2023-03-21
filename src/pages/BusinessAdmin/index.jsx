@@ -213,7 +213,7 @@ export function BusinessAdmin() {
                   .map((currentOrder) => {
                     return (
                       <article
-                        className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 border-gray-500 pb-2"
+                        className="w-11/12 max-h-full flex flex-row flex-wrap items-center justify-between px-4 border-b-2 pb-2"
                         key={currentOrder._id}
                       >
                         <div className="w-2/10 flex flex-row justify-center">

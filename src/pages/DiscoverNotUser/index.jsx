@@ -11,6 +11,7 @@ export function DiscoverNotClient() {
   return (
     <div className="min-h-screen">
       <NotClientNavBar />
+      <div className="h-8"></div>
       <SearchBar changeSearch={changeSearch} />
       <ProductFeed search={search} />
     </div>
