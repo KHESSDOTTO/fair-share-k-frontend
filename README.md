@@ -1,16 +1,5 @@
-# Template para aplicação React com autenticação + Tailwind
+# Fair Share - App para evitar o desperdício de comida
 
-Tailwind já instalado e pronto para ser utilizado.
-Plugins: @tailwindcss/typography e @tailwindcss/forms
+Com o app fair-share, evita-se o desperdício de comida! Os estabelecimentos anunciam com melhores preços os produtos que, caso não sejam vendidos rapidamente, seriam descartados (mercados, padarias, restaurantes, entre outros).
 
-Tailwind Docs
-
-- https://tailwindcss.com/docs
-
-Tailwind Components
-
-- https://tailwindui.com/
-
-Hero Icons
-Site - https://heroicons.com/
-Docs - https://github.com/tailwindlabs/heroicons
+É possível fazer reservas de pedidos para retirada e realizar o acompanhamento do status da reserva.
