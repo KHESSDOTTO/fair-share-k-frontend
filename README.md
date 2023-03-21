@@ -1,16 +1,5 @@
-# Template para aplicação React com autenticação + Tailwind
+# Fair Share - WebApp to avoid food waste!
 
-Tailwind já instalado e pronto para ser utilizado.
-Plugins: @tailwindcss/typography e @tailwindcss/forms
+With fair-share, we avoid food waste! Business such as bakeries, restaurants, grocery shops, etc. can advertise, at lower prices, products that would be discarded if they don't sell quickly.
 
-Tailwind Docs
-
-- https://tailwindcss.com/docs
-
-Tailwind Components
-
-- https://tailwindui.com/
-
-Hero Icons
-Site - https://heroicons.com/
-Docs - https://github.com/tailwindlabs/heroicons
+It is possible to make reservations and track their status until pick up.
