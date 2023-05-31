@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiURLs = {
-  development: "http://localhost:5000",
+  development: "https://fair-share-k-backend.cyclic.app",
   production: "https://fair-share-k-backend.cyclic.app",
 };
 

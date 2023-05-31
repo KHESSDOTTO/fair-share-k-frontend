@@ -31,7 +31,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <>
-      <div className="App bg-stone-100 h-full min-w-fit">
+      <div className="App bg-stone-200 h-full min-w-fit">
         <AuthContextComponent>
           <Toaster position="top-center" />
           <Routes>

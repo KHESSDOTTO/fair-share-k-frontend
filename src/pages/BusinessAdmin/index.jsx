@@ -136,7 +136,7 @@ export function BusinessAdmin() {
             </div>
           </section>
           <section className="w-10/12 mt-4">
-            <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold pl-56">
+            <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold pl-4">
               My Products
             </h2>
             <div className="h-80 overflow-auto bg-slate-100 rounded-xl border-2 flex flex-col items-center justify-start mx-auto flex-nowrap gap-2 mt-5 py-2">
@@ -198,7 +198,7 @@ export function BusinessAdmin() {
             </div>
           </section>
           <section className="w-10/12 mt-4">
-            <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold text-center">
+            <h2 className="border-b-2 border-b-green-900 text-2xl text-green-900 font-semibold pl-4">
               History
             </h2>
             <div className="h-80 overflow-y-auto bg-white rounded-xl border-2 mt-2 flex flex-col flex-nowrap items-center justify-start mx-auto flex-wrap gap-2 mt-5 py-2">
