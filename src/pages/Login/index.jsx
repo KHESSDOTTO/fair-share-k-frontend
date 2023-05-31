@@ -52,12 +52,12 @@ export function Login() {
   console.log(showModal);
 
   return (
-    <div className="bg-white/90 w-screen min-h-screen flex flex-row">
+    <div className="bg-white/90 w-screen min-h-screen flex flex-col pb-8 gap-2 justify-center items-center md:flex-row">
       {showModal && (
         <ModalReactivateUser changeModal={funcShowModal} form={form} />
       )}
-      <img src={img} alt="" className="max-h-screen mx-auto" />
-      <div className="flex flex-col justify-center w-1/2 items-start px-24">
+      <img src={img} alt="food" className="max-h-screen md:mx-auto" />
+      <div className="flex flex-col justify-center items-start md:px-24 md:w-1/2">
         <section className="flex flex-col gap-12">
           <h1 className="text-5xl font-bold text-center">Log in</h1>
           <div className="w-10/12 flex flex-col justify-center items-center m-auto">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function Home() {
   return (
     <>
-      <div className="flex flex-col justify-between gap-4 items-center bg-cover bg-center min-h-screen bg-stone-200 md:bg-[url('https://res.cloudinary.com/dukhlscyh/image/upload/v1678419063/pictures/file_ag1ztc.png')]">
+      <div className="flex flex-col justify-between gap-4 pt-8 items-center bg-cover bg-center min-h-screen bg-stone-200 md:bg-[url('https://res.cloudinary.com/dukhlscyh/image/upload/v1678419063/pictures/file_ag1ztc.png')]">
         <img
           src="src/images/mobile-home.png"
           className="w-10/12 md:hidden"
@@ -21,7 +21,7 @@ export function Home() {
         </div>
         <img
           src="src/images/footer-powered-by.png"
-          className="self-start w-3/4 rounded-3xl"
+          className="self-start w-3/4"
         ></img>
       </div>
     </>
